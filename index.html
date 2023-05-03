@@ -1,0 +1,385 @@
+<div class="formbold-main-wrapper">
+    <!-- Author: FormBold Team -->
+    <!-- Learn More: https://formbold.com -->
+    <div class="formbold-form-wrapper">
+        <img src="https://timagestore.blob.core.windows.net/img-shares/logo.jpg">
+        <form onsubmit="event.preventDefault();bookAppointment()">
+            <label class="formbold-form-label formbold-form-label-2">
+                Basic Details
+            </label>
+            <div class="formbold-mb-5">
+                <label for="name" class="formbold-form-label">
+                    Are you already registered with Oman International Hospital?
+                </label>
+                <input type="radio" name="registered" id="registered-yes" class="formbold-form-input"
+                    onclick="toggleNewUser(this)" value="1" required />
+                <label class="radio-label" for="registered-yes">
+                    Yes
+                </label>
+                <input type="radio" name="registered" id="registered-no" class="formbold-form-input"
+                    onclick="toggleNewUser(this)" value="2" required />
+                <label class="radio-label" for="registered-no">
+                    No
+                </label>
+            </div>
+            <div class="formbold-mb-5 new-user">
+                <label for="name" class="formbold-form-label"> OIH ID </label>
+                <input type="text" name="id" id="id" placeholder="Enter your OIH ID" class="formbold-form-input" />
+            </div>
+            <div class="formbold-mb-5 existing-user">
+                <label for="name" class="formbold-form-label"> Full Name </label>
+                <input type="text" name="name" id="name" placeholder="Full Name" class="formbold-form-input" />
+            </div>
+            <div class="formbold-mb-5 existing-user">
+                <label for="phone" class="formbold-form-label"> Phone Number </label>
+                <input type="text" name="phone" id="phone" placeholder="Enter your phone number"
+                    class="formbold-form-input" />
+            </div>
+            <div class="formbold-mb-5 existing-user">
+                <label for="email" class="formbold-form-label"> Email Address </label>
+                <input type="email" name="email" id="email" placeholder="Enter your email"
+                    class="formbold-form-input" />
+            </div>
+
+            <label class="formbold-form-label formbold-form-label-2">
+                Appointment Details
+            </label>
+            <div class="formbold-mb-5">
+                <label for="date" class="formbold-form-label"> Department </label>
+                <select id="department" onchange="selectDepartment(this)" required>
+                    <option value="">-- Select Department --</option>
+                    <option value="1">Cardiology</option>
+                    <option value="2">Internal Medicine</option>
+                </select>
+            </div>
+
+            <div class="formbold-mb-5">
+                <label for="date" class="formbold-form-label"> Doctor </label>
+                <select id="doctor" required>
+                    <option value="">-- Select Doctor --</option>
+                </select>
+            </div>
+
+            <div class="flex flex-wrap formbold--mx-3">
+                <div class="w-full sm:w-half formbold-px-3">
+                    <div class="formbold-mb-5 w-full">
+                        <label for="date" class="formbold-form-label"> Department </label>
+                        <input type="date" name="date" id="date" class="formbold-form-input" required />
+                    </div>
+                </div>
+                <div class="w-full sm:w-half formbold-px-3">
+                    <div class="formbold-mb-5">
+                        <label for="time" class="formbold-form-label"> Time </label>
+                        <input type="time" name="time" id="time" class="formbold-form-input" required />
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="formbold-mb-5 formbold-pt-3">
+                <label class="formbold-form-label formbold-form-label-2">
+                    Address Details
+                </label>
+                <div class="flex flex-wrap formbold--mx-3">
+                    <div class="w-full sm:w-half formbold-px-3">
+                        <div class="formbold-mb-5">
+                            <input type="text" name="area" id="area" placeholder="Enter area"
+                                class="formbold-form-input" />
+                        </div>
+                    </div>
+                    <div class="w-full sm:w-half formbold-px-3">
+                        <div class="formbold-mb-5">
+                            <input type="text" name="city" id="city" placeholder="Enter city"
+                                class="formbold-form-input" />
+                        </div>
+                    </div>
+                    <div class="w-full sm:w-half formbold-px-3">
+                        <div class="formbold-mb-5">
+                            <input type="text" name="state" id="state" placeholder="Enter state"
+                                class="formbold-form-input" />
+                        </div>
+                    </div>
+                    <div class="w-full sm:w-half formbold-px-3">
+                        <div class="formbold-mb-5">
+                            <input type="text" name="post-code" id="post-code" placeholder="Post Code"
+                                class="formbold-form-input" />
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <div>
+                <button id="submit" class="formbold-btn">Book Appointment</button>
+            </div>
+        </form>
+    </div>
+</div>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: "Inter", Arial, Helvetica, sans-serif;
+    }
+
+    form {
+        padding: 20px 0px;
+        text-align: left;
+    }
+
+    form #registered-no {
+        margin-left: 20px;
+    }
+
+    form .radio-label {
+        font-weight: 500;
+        font-size: 16px;
+        color: #07074d;
+    }
+
+    .formbold-mb-5 {
+        margin-bottom: 20px;
+    }
+
+    .formbold-pt-3 {
+        padding-top: 12px;
+    }
+
+    .formbold-main-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .formbold-form-wrapper {
+        margin: 0 auto;
+        max-width: 550px;
+        width: 100%;
+        background: white;
+        text-align: center;
+    }
+
+    .formbold-form-label {
+        display: block;
+        font-weight: 500;
+        font-size: 16px;
+        color: #07074d;
+        margin-bottom: 12px;
+    }
+
+    .formbold-form-label-2 {
+        font-weight: 600;
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .formbold-form-input:not([type="radio"]),
+    select {
+        width: 100%;
+        padding: 12px 24px;
+        border-radius: 6px;
+        border: 1px solid #e0e0e0;
+        background: white;
+        font-weight: 500;
+        font-size: 16px;
+        color: #6b7280;
+        outline: none;
+        resize: none;
+    }
+
+    .formbold-form-input:focus {
+        border-color: #6a64f1;
+        box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .formbold-btn {
+        text-align: center;
+        font-size: 16px;
+        border-radius: 6px;
+        padding: 14px 32px;
+        border: none;
+        font-weight: 600;
+        background-color: #453ded;
+        color: white;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .formbold-btn:hover {
+        box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .formbold-btn:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+
+    .formbold--mx-3 {
+        margin-left: -12px;
+        margin-right: -12px;
+    }
+
+    .formbold-px-3 {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .flex {
+        display: flex;
+    }
+
+    .flex-wrap {
+        flex-wrap: wrap;
+    }
+
+    .w-full {
+        width: 100%;
+    }
+
+    @media (min-width: 540px) {
+        .sm\:w-half {
+            width: 50%;
+        }
+    }
+
+    .existing-user,
+    .new-user {
+        display: none;
+    }
+</style>
+<script>
+    var doctors = [
+        {
+            values: [
+                {
+                    value: 1, name: "Mohammed Al Mukhaini"
+                },
+                {
+                    value: 2, name: "Kahlid Al Saidi"
+                },
+                {
+                    value: 3, name: "Muhammed Mustafa"
+                }
+            ]
+        },
+        {
+            values: [
+                {
+                    value: 1, name: "Miguel Pirre"
+                },
+                {
+                    value: 2, name: "Jose Colina"
+                },
+                {
+                    value: 3, name: "Omar Hashim Al Alawi"
+                }
+            ]
+        }
+    ];
+
+    function toggleNewUser(val) {
+        //alert("changed to " + parseInt(val.value));
+        if (parseInt(val.value) === 1) {
+            for (let el of document.getElementsByClassName('new-user')) {
+                el.style.display = "block";
+                el.getElementsByTagName("input")[0].setAttribute("required", true);
+            }
+
+            for (let el of document.getElementsByClassName('existing-user')) {
+                el.style.display = "none";
+                el.getElementsByTagName("input")[0].removeAttribute("required");
+            }
+        } else {
+            for (let el of document.getElementsByClassName('new-user')) {
+                el.style.display = "none";
+                el.getElementsByTagName("input")[0].removeAttribute("required");
+            }
+
+            for (let el of document.getElementsByClassName('existing-user')) {
+                el.style.display = "block";
+                el.getElementsByTagName("input")[0].setAttribute("required", true);
+            }
+        }
+    }
+
+    function selectDepartment(val) {
+        while (document.getElementById("doctor").childNodes.length > 2) {
+            document.getElementById("doctor").removeChild(document.getElementById("doctor").lastChild);
+        }
+
+        switch (parseInt(val.value)) {
+            case 1:
+                for (let doc of doctors[0].values) {
+                    let opt = document.createElement('option');
+                    opt.textContent = doc.name;
+                    opt.value = doc.value;
+                    document.getElementById("doctor").appendChild(opt);
+                }
+                break;
+
+            case 2:
+                for (let doc of doctors[1].values) {
+                    let opt = document.createElement('option');
+                    opt.textContent = doc.name;
+                    opt.value = doc.value;
+                    document.getElementById("doctor").appendChild(opt);
+                }
+                break;
+        }
+    }
+
+    function bookAppointment() {
+        document.getElementById("submit").setAttribute("disabled", true);
+
+        var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+        var theUrl = "https://prod-183.westus.logic.azure.com:443/workflows/ed871bceb4884569bcfdad363c881e97/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=RM9GCV_YJ2DbbrhX6L2tA6DE5zFbPJik8tL0l14g5hs";
+        xmlhttp.open("POST", theUrl);
+        xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xmlhttp.setRequestHeader("Accept", "application/json");
+
+        var department_Name;
+        var doctor_Name;
+
+        switch (parseInt(document.getElementById("department").value)) {
+            case 1:
+                department_Name = "Cardiology";
+                break;
+            case 2:
+                department_Name = "Internal Medicine";
+                break;
+        };
+
+        switch (parseInt(document.getElementById("department").value)) {
+            case 1:
+                doctor_Name = doctors[0].values.filter(val => val.value == parseInt(document.getElementById("doctor").value))[0].name;
+                break;
+            case 2:
+                doctor_Name = doctors[1].values.filter(val => val.value == parseInt(document.getElementById("doctor").value))[0].name;
+                break;
+        };
+
+        var data = JSON.stringify({
+            "oih_ID": document.getElementById("id").value,
+            "title": document.getElementById("name").value,
+            "phone_Number": document.getElementById("phone").value,
+            "email": document.getElementById("email").value,
+            "appointment_DateTime": document.getElementById("date").value + "T" + document.getElementById("time").value,
+            "Department_Name": department_Name,
+            "Doctor_Name": doctor_Name
+        });
+        xmlhttp.send(data);
+
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState === 4) {
+                // var response = JSON.parse(xmlhttp.responseText);
+                if (xmlhttp.status === 200) {
+                    alert("Appointment booked successfully.");
+                } else {
+                    alert("Appointment booking failed.");
+                }
+            }
+        }
+    }
+</script>
